@@ -30,6 +30,15 @@ router.post('/getComment',(req,res)=>{
   })
 
 })
+//feed_logs
+router.get('/feedLogs', (req, res) => {
+  conn.query('SELECT * FROM feed_logs', (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+
 
 //get all users
 router.get('/allUsers', (req, res) => {
@@ -362,6 +371,7 @@ router.get('/statusLog',(req,res)=>{
   })
 });
 
+
 //feed algo
 router.get('/feed/:userId', (req, res) => {
   const userId = req.params.userId;
@@ -397,6 +407,8 @@ router.get('/feed/:userId', (req, res) => {
     }
   );
 });
+
+
 
 
 //feed for not logged-ins
@@ -546,7 +558,7 @@ router.post('/incrementClicks', (req, res) => {
       res.json(err);
       return;
     }
-
+console.log("vshdvv");
     res.json({ success: true, message: 'Clicks incremented successfully.' });
   });
 });
